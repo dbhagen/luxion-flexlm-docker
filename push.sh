@@ -5,4 +5,5 @@ USERNAME=dbhagen
 # image name
 IMAGE=luxion-flexlm-docker
 VERSION=`cat VERSION`
-docker build -t $USERNAME/$IMAGE:latest -t $USERNAME/$IMAGE:$VERSION .
+docker push $USERNAME/$IMAGE:latest
+docker push $USERNAME/$IMAGE:$VERSION

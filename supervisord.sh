@@ -2,6 +2,7 @@
 FIRSTRUN=1
 MACADDRESS=`cat /sys/class/net/eth0/address`
 SETHOSTNAME=`cat /etc/hostname`
+echo "127.0.0.1 ${SETHOSTNAME}" >> /etc/hosts
 
 until [ -f /var/luxion_flexlm/license.lic ]
 do
