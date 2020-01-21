@@ -7,6 +7,7 @@ RUN apk add --no-cache curl \
 
 # Pull base image.
 FROM ubuntu:18.04
+ADD VERSION .
 
 # Add files.
 COPY --from=downloader /root/luxion_flexlm/ /usr/bin/luxion_flexlm
