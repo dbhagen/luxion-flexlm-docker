@@ -17,7 +17,8 @@ COPY supervisord.sh /usr/bin/supervisord.sh
 RUN apt update && apt install -y supervisor \
     && ln -s /lib64/ld-linux-x86-64.so.2 /lib64/ld-lsb-x86-64.so.3 \
     && chmod +x /usr/bin/supervisord.sh \
-    && mkdir -p /var/luxion_flexlm/
+    && mkdir -p /var/luxion_flexlm/ \
+    && mkdir -p /usr/tmp/
 
 COPY luxion_flexlm.conf /etc/supervisor/conf.d/luxion_flexlm.conf
 COPY supervisord.conf /etc/supervisor/supervisord.conf
@@ -35,4 +36,3 @@ VOLUME [ "/var/luxion_flexlm" ]
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "/usr/bin/luxion_flexlm/lmstat", "-a" ]
 # Define default command.
 ENTRYPOINT ["/usr/bin/supervisord.sh"]
-# ENTRYPOINT [ "/bin/bash" ]
